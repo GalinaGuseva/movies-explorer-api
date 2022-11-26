@@ -1,9 +1,6 @@
 const allowedCors = [
   'https://gal.nomoredomains.club',
   'http://gal.nomoredomains.club',
-  'localhost:3003',
-  'http://localhost:3003',
-  'http://localhost:3002',
   'localhost:3002',
 ];
 
