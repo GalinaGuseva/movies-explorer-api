@@ -8,9 +8,7 @@ const getMovies = (req, res, next) => {
   const owner = req.user._id;
   Movie.find({ owner })
     .then((movies) => res.send(movies))
-    .catch((err) => {
-      next(err);
-    });
+    .catch(next);
 };
 
 const createMovie = (req, res, next) => {

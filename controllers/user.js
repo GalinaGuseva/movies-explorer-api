@@ -37,6 +37,8 @@ const updateUser = (req, res, next) => {
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
         next(new BadRequestError('Переданы некорректные данные'));
+      } else if (err.code === 11000) {
+        return next(new ConflictError('Такой email уже зарегистрирован'));
       }
       return next(err);
     });
@@ -69,7 +71,7 @@ const getUser = (req, res, next) => {
       throw new NotFoundError('Пользователь с таким id не найден');
     })
     .then((user) => res.send(user))
-    .catch((err) => next(err));
+    .catch(next);
 };
 
 const logout = (req, res) => {
